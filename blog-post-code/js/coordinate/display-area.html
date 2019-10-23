@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>显示区域</title>
+<style>
+/* *{
+	margin: 0;
+	padding: 0;
+} */
+</style>
+</head>
+<body>
+<div id="info" style="width: 1500px;height:1500px;padding: 10px;margin: 10px;"></div>
+<script>
+window.onload = function(){
+	var $info = document.getElementById('info');
+	var Screen = window.screen;
+	$info.innerHTML = '<h3>Screen:</h3>'
+					+ 'Screen.width:'+Screen.width+'，Screen.height:'+Screen.height+'</br>'
+					+ 'Screen.availWidth:'+Screen.availWidth+'，Screen.availHeight:'+Screen.availHeight+'</br>'
+					+ '<h3>window:</h3>'
+					+ 'window.innerWidth:'+window.innerWidth+'，window.innerHeight:'+window.innerHeight+'</br>'
+					+ 'window.outerWidth:'+window.outerWidth+'，window.outerHeight:'+window.outerHeight+'</br>'
+					+ '<h3>document:</h3>'
+					+ 'documentElement.clientWidth:'+document.documentElement.clientWidth+'，documentElement.clientHeight:'+document.documentElement.clientHeight+'</br>'
+	var docEl = document.documentElement; 				
+	var docBody = document.documentElement; 				
+	var logStr = 'docEl.scrollWidth:'+docEl.scrollWidth+'，docEl.scrollHeight:'+docEl.scrollHeight+'\n'
+			   + 'docBody.clientWidth:'+docBody.clientWidth+'，docBody.clientHeight:'+docBody.clientHeight+'\n'
+	console.log(logStr)
+}
+</script>
+</body>
+</html>
