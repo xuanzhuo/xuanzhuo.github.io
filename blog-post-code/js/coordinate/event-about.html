@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>鼠标事件对象</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#info{
+	width: 300px;
+	background-color: grey;
+	position: absolute;
+	pointer-events: none;
+}
+</style>
+</head>
+<body style="width: 2000px;height: 1000px;">
+<div id="info"></div>
+<script>
+var $info = document.getElementById('info');
+document.addEventListener('mousemove',moveHandle);
+function moveHandle(e){
+	console.log(11)
+	var pageX = e.pageX,
+		pageY = e.pageY,
+		clientX = e.clientX,
+		clientY = e.clientY,
+		screenX = e.screenX,
+		screenY = e.screenY;
+	
+	$info.style.left = pageX + 'px';
+	$info.style.top = pageY + 'px';
+	$info.innerHTML = 'screenX:'+ screenX + ', screenY:' + screenY + '</br>'
+					+ 'clientX:'+ clientX + ', clientY:' + clientY + '</br>'
+					+ 'pageX:'+ pageX + ', pageY:'+pageY + '</br>'
+				
+					
+}
+</script>
+</body>
+</html>
