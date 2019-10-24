@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>元素</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	/* box-sizing: border-box;
+	-webkit-box-sizing: border-box; */
+}
+#box{
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	margin: 100px auto;
+	overflow: auto;
+	padding: 5px;
+}
+#inner{
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<div id="box" class="123">
+	box
+	<div id="inner">inner</div>
+</div>
+<div style="position: fixed;bottom:0;right:0;margin:0 20px 20px 0;">
+	可滚动距离:
+	<input type="button" id="btn1" value=">17"  onclick="handleClick(300)"/>
+	<input type="button" id="btn2" value="<17,>0" onclick="handleClick(195)"/>
+	<input type="button" id="btn3" value="<=0" onclick="handleClick(100)"/>
+	看这边：
+	<div id="info"></div>
+</div>
+<script>
+var $box = document.getElementById('box');
+var $inner = document.getElementById('inner');
+var $info = document.getElementById('info');
+var $btn1 = document.getElementById('btn1');
+var $btn2 = document.getElementById('btn2');
+var $btn3 = document.getElementById('btn3');
+
+$info.innerHTML = '$box.borderWidth:'+getStyle($box,'borderLeftWidth')+'</br>'
+				+ '$box.padding:'+getStyle($box,'paddingLeft')+'</br>'
+				+ '$box.clientWidth:'+$box.clientWidth+'，$box.clientHeight:'+$box.clientHeight+'</br>'
+				+ '$box.offsetWidth:'+$box.offsetWidth+'，$box.offsetHeight:'+$box.offsetHeight+'</br>'
+				+ '$box.scrollWidth:'+$box.scrollWidth+'，$box.scrollHeight:'+$box.scrollHeight+'</br>'
+				
+
+function getStyle(dom, attr){
+  //currentStyle兼容低版本ie,本次测试ie9+,不考虑,
+  //return dom.currentStyle ? dom.currentStyle[attr] : getComputedStyle(dom, false)[attr];
+  //getComputedStyle获取样式时，复合样式不要获取,例如border,分开获取borderLeftWidth...
+  return getComputedStyle(dom, false)[attr];
+}
+function handleClick(val){
+	$box.style.padding = 0;
+	$inner.style.width = val +'px';
+	$inner.style.height = val +'px';
+	$info.innerHTML = '$box.borderWidth:'+getStyle($box,'borderLeftWidth')+'</br>'
+					+ '$box.padding:'+getStyle($box,'paddingLeft')+'</br>'
+					+ '$box.clientWidth:'+$box.clientWidth+'，$box.clientHeight:'+$box.clientHeight+'</br>'
+					+ '$box.offsetWidth:'+$box.offsetWidth+'，$box.offsetHeight:'+$box.offsetHeight+'</br>'
+					+ '$box.scrollWidth:'+$box.scrollWidth+'，$box.scrollHeight:'+$box.scrollHeight+'</br>'
+					
+}
+$box.onscroll = function(){
+	console.log(this.scrollLeft)
+}
+</script>
+</body>
+</html>
