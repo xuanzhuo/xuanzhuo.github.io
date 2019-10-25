@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>获取元素坐标</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#wrap{
+	width: 150px;
+	height: 150px;
+	padding: 20px;
+	margin: 10px;
+	border: 1px solid black;
+	position: absolute;
+	left: 150px;
+	top: 150px;
+}
+#box{
+	/* display: inline; */
+	/* display: inline-block; */
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+	/* position: absolute;
+	left: 10px;
+	top: 10px; */
+}
+</style>
+</head>
+<body style="width: 2000px;height: 1000px;">
+<div id="wrap">
+	wrap
+	<div id="box">box</div>
+</div>
+<div id="info"></div>
+<script>
+var $box = document.getElementById('box');
+var $info = document.getElementById('info');
+var DomRect = $box.getBoundingClientRect();
+$info.innerHTML = '$boxRect.left:'+DomRect.left+'，$boxRect.right:'+DomRect.right+'</br>'
+				+ '$boxRect.width:'+DomRect.width+'</br>'
+				+ '$boxRect.top:'+DomRect.top+'，$boxRect.bottom:'+DomRect.bottom+'</br>'
+				+ '$boxRect.height:'+DomRect.height+'</br>'
+				+ '===============================================</br>'
+				+ '$box.offsetLeft:'+$box.offsetLeft+'，$box.offsetTop:'+$box.offsetTop+'</br>'
+				+ '$box.left:'+getFixedCoor($box).left+'，$box.top:'+getFixedCoor($box).top+'</br>'
+				
+window.addEventListener('scroll',function(){
+	var DomRect = $box.getBoundingClientRect();
+	$info.innerHTML = '$boxRect.left:'+DomRect.left+'，$boxRect.right:'+DomRect.right+'</br>'
+					+ '$boxRect.width:'+DomRect.width+'</br>'
+					+ '$boxRect.top:'+DomRect.top+'，$boxRect.bottom:'+DomRect.bottom+'</br>'
+					+ '$boxRect.height:'+DomRect.height+'</br>'
+					+ 'window.scrollX:'+pageXOffset+'</br>'
+})
+
+function getFixedCoor(el){
+	var left = el.offsetLeft;
+	var top = el.offsetTop;
+	while((el = el.offsetParent)){
+		left += el.offsetLeft;
+		top += el.offsetTop;
+	}
+	return {
+		left:left,
+		top:top
+	}
+}
+</script>
+</body>
+</html>
