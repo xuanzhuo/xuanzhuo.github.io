@@ -13,7 +13,7 @@
 	width: 300px;
 	background-color: grey;
 	position: absolute;
-	pointer-events: none;
+	/* pointer-events: none; */
 }
 </style>
 </head>
@@ -23,7 +23,6 @@
 var $info = document.getElementById('info');
 document.addEventListener('mousemove',moveHandle);
 function moveHandle(e){
-	console.log(11)
 	var pageX = e.pageX,
 		pageY = e.pageY,
 		clientX = e.clientX,
