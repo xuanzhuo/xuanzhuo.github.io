@@ -11,15 +11,18 @@
             padding: 0;
             margin: 0;
             background: #000;
-            background: url( ./img/starry-sky.jpg) no-repeat;
+            background: url(./img/starry-sky.jpg) no-repeat;
             background-size: cover;
+            background-clip: content-box;
+            padding-bottom: 70px;
+            overflow: hidden;
         }
 
         canvas {
             position: absolute;
             width: 100%;
             height: 100%;
-            animation: anim 1.5s ease-in-out infinite;
+            animation: anim 1.5s ease-in-out infinite alternate;
         }
 
         #name {
@@ -29,7 +32,32 @@
             transform: translate(-50%, -50%);
             margin-top: -20px;
             font-size: 35px;
-            color: #ea80b0;
+            /* color: #ea80b0; */
+            color: purple;
+            animation: textAnim 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes textAnim {
+            0% {
+                text-shadow: 0 0 4px #fff;
+            }
+
+            25% {
+                text-shadow: 0 0 6px #fff;
+            }
+
+            50% {
+                text-shadow: none;
+                /* text-shadow:0 0 6px #fff; */
+            }
+
+            75% {
+                text-shadow: 0 0 6px #fff;
+            }
+
+            100% {
+                text-shadow: 0 0 4px #fff;
+            }
         }
 
         @keyframes anim {
@@ -58,7 +86,6 @@
 
 <body>
     <canvas id="pinkboard"></canvas>
-    <!-- 在下面加名字 -->
     <div id="name" style="color: purple;">
         孟瑶开心果<br>
         开心每一天
