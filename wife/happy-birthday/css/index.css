@@ -46,6 +46,7 @@ canvas {
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1;
 }
 .cake {
   height: 500px;
@@ -58,14 +59,13 @@ canvas {
   transform: translateY(-70%);
 }
 .text {
-  height: 500px;
+  height: 150px;
   width: 100%;
   font-size: 150px;
-  line-height: 2;
+  line-height: 150px;
   text-align: center;
   position: absolute;
-  top: 50%;
-  transform: translateY(-70%);
+  bottom: 260px;
 }
 .text1 {
   height: 150px;
@@ -73,7 +73,7 @@ canvas {
   font-size: 50px;
   text-align: center;
   position: absolute;
-  bottom: 150px;
+  bottom: -140px;
 }
 .candle {
   background: #ffffff;
