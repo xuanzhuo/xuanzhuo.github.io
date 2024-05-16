@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>生日快乐</title>
+</head>
+<body>
+    <div class="page fireworks" id="page1">
+        <canvas id="canvas"></canvas>
+        <div class="btn" id="btn">吃蛋糕喽</div>
+    </div>
+    <div class="page bg hide" id="page2">
+        <div class="hb-bg"></div>
+        <div class="cake">
+            <div class="candle">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>
+        </div>
+        <div class="text">老婆</div>
+        <div class="text1">生日快乐<br /> 永远十八</div>
+        <div class="btn btn1" id="btn1">看烟花喽</div>
+    </div>
+    <audio id="audio" src="./music/2.mp3" autoplay="autoplay" loop></audio>
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/petalfloat.min.js"></script>
+<script>
+    var btn = document.getElementById('btn');
+    var btn1 = document.getElementById('btn1');
+    var page1 = document.getElementById('page1');
+    var page2 = document.getElementById('page2');
+    var audio = document.getElementById('audio');
+    btn.onclick = function () {
+        page1.classList.add('hide');
+        page2.classList.remove('hide');
+        audio.play();
+        var pf = new PF({
+            life: 60,
+        });
+        pf.init();
+        pf.start();
+        window.addEventListener("resize", function () {
+            pf.reSize();
+        })
+    }
+    btn1.onclick = function () {
+        page1.classList.remove('hide');
+        page2.classList.add('hide');
+    }
+</script>
+
+</html>
